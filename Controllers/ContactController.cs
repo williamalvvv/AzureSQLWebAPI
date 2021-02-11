@@ -16,6 +16,7 @@ namespace Controllers
             contactsContext = context;
         }
 
+        //Get Method Fully Functional
         [HttpGet]
         public ActionResult<IEnumerable<Contacts>> Get()
         {
