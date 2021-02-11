@@ -19,6 +19,7 @@ namespace AzureSQLWebAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            //Some comment
         }
 
         public IConfiguration Configuration { get; }
