@@ -45,22 +45,25 @@ namespace Controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Contacts value)
+        public IActionResult Put(int id, [FromBody] Contacts value)
         {
             Contacts updatedContact = value;
             var selectedElement = contactsContext.ContactsSet.Find(updatedContact.identifier);
             selectedElement.name = value.name;
             selectedElement.email = value.email;
             contactsContext.SaveChanges();
+            
+            return Ok("Contact Successfully Updated");
         }
 
         [HttpDelete ("{id}")]
-        public ActionResult Delete (int id) 
+        public ActionResult Delete(int id) 
         {
-            var selectedContact = contactsContext.ContactsSet.Find (id);
-            contactsContext.Remove(selectedContact);
-            contactsContext.SaveChanges ();
-            return Ok ("Registro Eliminado correctamente!");
+            var selectedElement = contactsContext.ContactsSet.Find(id);
+            contactsContext.ContactsSet.Remove(selectedElement);
+            contactsContext.SaveChanges();
+
+            return Ok("Contact Successfully Deleted");
         }
 
         ~ContactController()
