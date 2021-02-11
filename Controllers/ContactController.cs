@@ -44,6 +44,25 @@ namespace Controllers
             return Ok("Contact Successfully Inserted");
         }
 
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Contacts value)
+        {
+            Contacts updatedContact = value;
+            var selectedElement = contactsContext.ContactsSet.Find(updatedContact.identifier);
+            selectedElement.name = value.name;
+            selectedElement.email = value.email;
+            contactsContext.SaveChanges();
+        }
+
+        [HttpDelete ("{id}")]
+        public ActionResult Delete (int id) 
+        {
+            var selectedContact = contactsContext.ContactsSet.Find (id);
+            contactsContext.Remove(selectedContact);
+            contactsContext.SaveChanges ();
+            return Ok ("Registro Eliminado correctamente!");
+        }
+
         ~ContactController()
         {
             contactsContext.Dispose();
