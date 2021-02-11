@@ -10,7 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using AzureSQLWebAPI.Models;
+using Microsoft.EntityFrameworkCore;
 namespace AzureSQLWebAPI
 {
     public class Startup
@@ -25,6 +26,8 @@ namespace AzureSQLWebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<ContactsContext>(opt => opt.UseSqlServer(connectionString));
             services.AddControllers();
         }
 

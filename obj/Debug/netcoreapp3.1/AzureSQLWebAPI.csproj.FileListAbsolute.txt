@@ -58,3 +58,5 @@
 /Users/william/Desktop/Azure Projects/AzureSQLWebAPI/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 /Users/william/Desktop/Azure Projects/AzureSQLWebAPI/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
 /Users/william/Desktop/Azure Projects/AzureSQLWebAPI/obj/Debug/netcoreapp3.1/AzureSQLWebAPI.csproj.CopyComplete
+/Users/william/Desktop/Azure Projects/AzureSQLWebAPI/bin/Debug/netcoreapp3.1/Humanizer.dll
+/Users/william/Desktop/Azure Projects/AzureSQLWebAPI/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
