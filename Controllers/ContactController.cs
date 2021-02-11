@@ -23,6 +23,27 @@ namespace Controllers
             return contactsContext.ContactsSet.ToList();
         }
 
+        //GetByID Method Fully Functional
+        [HttpGet("{id}")]
+        public ActionResult<Contacts> Get(int id)
+        {
+            var selectedContact = (from c in contactsContext.ContactsSet
+                                    where c.identifier == id.ToString()
+                                    select c).FirstOrDefault();
+            
+            return selectedContact;
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Contacts value)
+        {
+            Contacts newContact = value;
+            contactsContext.ContactsSet.Add(newContact);
+            contactsContext.SaveChanges();
+
+            return Ok("Contact Successfully Inserted");
+        }
+
         ~ContactController()
         {
             contactsContext.Dispose();
