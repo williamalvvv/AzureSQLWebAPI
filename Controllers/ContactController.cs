@@ -56,13 +56,15 @@ namespace Controllers
             return Ok("Contact Successfully Updated");
         }
 
-        [HttpDelete ("{id}")]
+        [HttpDelete("{id}")]
         public ActionResult Delete(int id) 
         {
-            var selectedElement = contactsContext.ContactsSet.Find(id);
-            contactsContext.ContactsSet.Remove(selectedElement);
+            var selectedContact = (from c in contactsContext.ContactsSet
+                                    where c.identifier == id.ToString()
+                                    select c).FirstOrDefault();
+            //var deletionContact = contactsContext.ContactsSet.Find(id);
+            contactsContext.ContactsSet.Remove(selectedContact);
             contactsContext.SaveChanges();
-
             return Ok("Contact Successfully Deleted");
         }
 
